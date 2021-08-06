@@ -107,7 +107,7 @@ phases:
           value: '80'
     stepsInParallel: false
   - type: K8S_PHASE_STEP
-    name: Splitting Traffic 10/90
+    name: Splitting Traffic 20/80
     steps:
     - type: K8S_APPLY
       name: Apply Split Traffic
