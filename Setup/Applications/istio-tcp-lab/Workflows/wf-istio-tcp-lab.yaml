@@ -69,11 +69,6 @@ phases:
   - type: K8S_PHASE_STEP
     name: Splitting Traffic 10/90
     steps:
-    - type: K8S_APPLY
-      name: Apply Split Traffic
-      properties:
-        filePaths: templates/VirtualService.yaml
-        stateTimeoutInMinutes: 10
     - type: K8S_SCALE
       name: Scale Deployment Percentage
       properties:
@@ -81,6 +76,11 @@ phases:
         instances: '2'
         stateTimeoutInMinutes: 10
         workload: ${k8s.canaryWorkload}
+    - type: K8S_APPLY
+      name: Apply Split Traffic
+      properties:
+        filePaths: templates/VirtualService.yaml
+        stateTimeoutInMinutes: 10
     stepsInParallel: false
   provisionNodes: false
   serviceName: basic-istio
