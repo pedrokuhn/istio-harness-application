@@ -74,6 +74,13 @@ phases:
       properties:
         filePaths: templates/VirtualService.yaml
         stateTimeoutInMinutes: 10
+    - type: K8S_SCALE
+      name: Scale Deployment Percentage
+      properties:
+        instanceUnitType: COUNT
+        instances: '2'
+        stateTimeoutInMinutes: 10
+        workload: ${k8s.canaryWorkload}
     stepsInParallel: false
   provisionNodes: false
   serviceName: basic-istio
